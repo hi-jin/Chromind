@@ -1,16 +1,31 @@
-import CreateBasicObjectService from "../../basic_object/application/query/CreateBasicObjectService";
-import GetBasicObjectService from "../../basic_object/application/query/GetBasicObjectService";
-import UpdateBasicObjectService from "../../basic_object/application/query/UpdateBasicObjectService";
+import { inject, injectable } from "inversify";
+import { QUERY } from "../../config/contant/query";
+import "reflect-metadata";
+
+import CreateBasicObjectQuery from "../../basic_object/application/query/CreateBasicObjectQuery";
+import GetBasicObjectQuery from "../../basic_object/application/query/GetBasicObjectQuery";
+import UpdateBasicObjectQuery from "../../basic_object/application/query/UpdateBasicObjectQuery";
 import CommonObjectId from "../../common/model/CommonObjectId";
 import Point from "../../common/model/Point";
 import CommonObject from "../domain/model/CommonObject";
 import BasicObjectService from "../domain/repository/BasicObjectService";
 
+@injectable()
 export default class BasicObjectServiceImpl implements BasicObjectService {
 
-    private createBasicObjectService: CreateBasicObjectService;
-    private getBasicObjectService: GetBasicObjectService;
-    private updateBasicObjectService: UpdateBasicObjectService;
+    private _createBasicObjectQuery: CreateBasicObjectQuery;
+    private _getBasicObjectQuery: GetBasicObjectQuery;
+    private _updateBasicObjectQuery: UpdateBasicObjectQuery;
+
+    constructor(
+        @inject(QUERY.CreateBasicObjectQuery) createBasicObjectQuery: CreateBasicObjectQuery,
+        @inject(QUERY.GetBasicObjectQuery) getBasicObjectQuery: GetBasicObjectQuery,
+        @inject(QUERY.UpdateBasicObjectQuery) updateBasicObjectQuery: UpdateBasicObjectQuery,
+    ) {
+        this._createBasicObjectQuery = createBasicObjectQuery;
+        this._getBasicObjectQuery = getBasicObjectQuery;
+        this._updateBasicObjectQuery = updateBasicObjectQuery;
+    }
 
     createBasicObject(content: string, absolutePoint: Point): CommonObject {
         
