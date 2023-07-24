@@ -1,5 +1,5 @@
 import { inject, injectable } from "inversify";
-import { REPOSITORY } from "../../../config/contant/repository";
+import { REPOSITORY } from "../../../config/constant/repository";
 import "reflect-metadata";
 
 import BasicObject from "../../domain/model/BasicObject";

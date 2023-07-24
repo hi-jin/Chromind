@@ -1,5 +1,5 @@
 import { inject, injectable } from "inversify";
-import { QUERY } from "../../config/contant/query";
+import { QUERY } from "../../config/constant/query";
 import "reflect-metadata";
 
 import CreateBasicObjectQuery from "../../basic_object/application/query/CreateBasicObjectQuery";

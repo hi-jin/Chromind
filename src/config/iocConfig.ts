@@ -1,7 +1,7 @@
 // ioc
 import { Container } from "inversify";
-import { QUERY } from "./contant/query";
-import { REPOSITORY } from "./contant/repository";
+import { QUERY } from "./constant/query";
+import { REPOSITORY } from "./constant/repository";
 import "reflect-metadata"
 
 // QUERY
