@@ -8,12 +8,15 @@ import BasicObjectRepository from "../domain/repository/BasicObjectRepository";
 
 @injectable()
 export default class BasicObjectRepositoryImpl implements BasicObjectRepository {
-    public findById(id: BasicObjectId): BasicObject {
 
+    private _dummyBasicObject: BasicObject = new BasicObject(new BasicObjectId(1), "test", new Point(1, 2))
+
+    public findById(id: BasicObjectId): BasicObject {
+        return this._dummyBasicObject;
     }
 
     public findAll(): Array<BasicObject> {
-
+        return [this._dummyBasicObject];
     }
 
     public add(object: BasicObject): void {
@@ -29,6 +32,6 @@ export default class BasicObjectRepositoryImpl implements BasicObjectRepository 
     }
 
     public nextBasicObjectId(): BasicObjectId {
-
+        return new BasicObjectId(1);
     }
 }

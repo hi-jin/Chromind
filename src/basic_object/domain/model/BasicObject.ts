@@ -8,11 +8,13 @@ export default class BasicObject {
     private _absolutePoint: Point;
     private _magnitude: Magnitude;
 
-    constructor(id: BasicObjectId, content: string, absolutePoint: Point) {
+    constructor(id: BasicObjectId, content: string, absolutePoint: Point);
+    constructor(id: BasicObjectId, content: string, absolutePoint: Point, magnitude: Magnitude)
+    constructor(id: BasicObjectId, content: string, absolutePoint: Point, magnitude?: Magnitude) {
         this._id = id;
         this._content = content;
         this._absolutePoint = absolutePoint;
-        this._magnitude = new Magnitude(10, 10);  // Should be changed. Auto calulate.
+        this._magnitude = magnitude ?? new Magnitude(10, 10);  // Should be changed. Auto calulate.
     }
 
     public get id(): BasicObjectId {
