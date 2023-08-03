@@ -1,11 +1,11 @@
 export default class CommonObjectId {
-    private _id: number;
+    private _id: string;
 
-    constructor(id: number) {
+    constructor(id: string) {
         this._id = id;
     }
 
-    get id(): number {
+    get id(): string {
         return this._id;
     }
 }
